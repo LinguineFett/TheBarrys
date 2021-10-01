@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2980c755c51faee4884e5b6dffe5ef2f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - myTransform: {instanceID: 0}
+  - animatorHandler: {instanceID: 0}
+  - rigidbody: {instanceID: 0}
+  - normalCamera: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
