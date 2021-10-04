@@ -4,113 +4,144 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Transform cameraObject;
-    InputHandler inputHandler;
-    Vector3 moveDirection;
+    // Variables
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
+    [SerializeField] private float rotationSpeed;
+    private float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
 
-    [HideInInspector]
-    public Transform myTransform;
-    [HideInInspector]
-    public AnimatorHandler animatorHandler;
-    public new Rigidbody rigidbody;
-    public GameObject normalCamera;
 
-    [Header("Stats")]
-    [SerializeField]
-    float movementSpeed = 5;
-    [SerializeField]
-    float rotationSpeed = 10;
+    private Vector3 moveDirection;
+    private Vector3 velocity;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float gravity;
+
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private float coolDown = 5f;
+    [SerializeField] private float coolDownTimer = 0;
+
+    // References
+    private CharacterController controller;
+    private Animator anim;
+    public Transform cam;
+
+    private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        inputHandler = GetComponent<InputHandler>();
-        animatorHandler = GetComponentInChildren<AnimatorHandler>();
-        cameraObject = Camera.main.transform;
-        myTransform = transform;
-        animatorHandler.Initialize();
+        Cursor.lockState = CursorLockMode.Locked;
+        controller = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animator>();
     }
 
-    public void Update()
+    private void Update()
     {
-        float delta = Time.deltaTime;
-
-        inputHandler.TickInput(delta);
-        HandleMovement(delta);
-        HandleRollingAndSprinting(delta);
-    }
-
-    #region Movement
-    Vector3 normalVector;
-    Vector3 targetPosition;
-
-    private void HandleRotation(float delta)
-    {
-        Vector3 targetDir = Vector3.zero;
-        float moveOverride = inputHandler.moveAmount;
-
-        targetDir = cameraObject.forward * inputHandler.vertical;
-        targetDir += cameraObject.right * inputHandler.horizontal;
-
-        targetDir.Normalize();
-        targetDir.y = 0;
-
-        if (targetDir == Vector3.zero)
-            targetDir = myTransform.forward;
-
-        float rs = rotationSpeed;
-
-        Quaternion tr = Quaternion.LookRotation(targetDir);
-        Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rs * delta);
-
-        myTransform.rotation = targetRotation;
-    }
-
-    public void HandleMovement(float delta)
-    {
-        moveDirection = cameraObject.forward * inputHandler.vertical;
-        moveDirection += cameraObject.right * inputHandler.horizontal;
-        moveDirection.Normalize();
-        moveDirection.y = 0;
-
-        float speed = movementSpeed;
-        moveDirection *= speed;
-
-        Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
-        rigidbody.velocity = projectedVelocity;
-
-        animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0);
-
-        if (animatorHandler.canRotate)
+        Move();
+        if (coolDownTimer > 0)
         {
-            HandleRotation(delta);
+            coolDownTimer -= Time.deltaTime;
         }
-    }
-     
-    public void  HandleRollingAndSprinting(float delta)
-    {
-        if (animatorHandler.anim.GetBool("isInteracting"))
-            return;
-
-        if (inputHandler.rollFlag)
+        if (coolDownTimer < 0)
         {
-            moveDirection = cameraObject.forward * inputHandler.vertical;
-            moveDirection += cameraObject.right * inputHandler.horizontal;
+            coolDownTimer = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) && coolDownTimer == 0)
+        {
+            StartCoroutine(Attack());
+            coolDownTimer = coolDown;
+        }
+        
+    }
 
-            if (inputHandler.moveAmount > 0)
+    private void Move()
+    {
+        isGrounded = Physics.CheckSphere(transform.position, groundCheckDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0) 
+        {
+            velocity.y = -2f;
+        }
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveZ = Input.GetAxisRaw("Vertical");
+        moveDirection = new Vector3(moveX, 0, moveZ).normalized;
+        //moveDirection = transform.TransformDirection(moveDirection);
+
+        if (isGrounded)
+        {
+            if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
             {
-                animatorHandler.PlayTargetAnimation("Rolling", true);
-                moveDirection.y = 0;
-                Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
-                myTransform.rotation = rollRotation;
+                Walk();
             }
-            else
+            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
             {
-                animatorHandler.PlayTargetAnimation("Backstep", true);
+                Run();
+            }
+            else if (moveDirection == Vector3.zero)
+            {
+                Idle();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
             }
         }
+        if (moveDirection == Vector3.zero)
+        {
+            controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+        }
+        else
+        {
+            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime);
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+        }
+        
+
     }
 
-    #endregion
+    private void Idle()
+    {
+        moveSpeed = 0;
+        anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+    }
+
+    private void Walk()
+    {
+        moveSpeed = walkSpeed;
+        anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
+    }
+
+    private void Run()
+    {
+        moveSpeed = runSpeed;
+        anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+    }
+
+    private void Jump()
+    {
+        anim.SetTrigger("Jump");
+        velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        
+    }
+
+    private IEnumerator Attack()
+    {
+
+        anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 1);
+        anim.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(0.9f);
+        anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 0);
+    }
 }

@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: 2980c755c51faee4884e5b6dffe5ef2f
+guid: 4404eef6a9773214baf32c1ac0822b59
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - myTransform: {instanceID: 0}
-  - animatorHandler: {instanceID: 0}
-  - rigidbody: {instanceID: 0}
-  - normalCamera: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
