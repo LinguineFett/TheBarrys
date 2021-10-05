@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Jump();
+                StartCoroutine(Jump());
             }
         }
         if (moveDirection == Vector3.zero)
@@ -128,9 +128,10 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
     }
 
-    private void Jump()
+    private IEnumerator Jump()
     {
         anim.SetTrigger("Jump");
+        yield return new WaitForSeconds(0.1f);
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         
     }
