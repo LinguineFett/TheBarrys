@@ -556,11 +556,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1491703527556336249, guid: 66a1c7ad3cad88b429638b4a86f3ca00, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.114286765
+      value: 0.11428679
       objectReference: {fileID: 0}
     - target: {fileID: 1491703527556336249, guid: 66a1c7ad3cad88b429638b4a86f3ca00, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.35101607
+      value: -0.35101604
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a1c7ad3cad88b429638b4a86f3ca00, type: 3}
@@ -571,6 +571,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1738435303933081970, guid: b5319bc0f87dd0b4ab519ce8a4d34e91, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: be94b935f4c9eb34294ef9838e1e6961, type: 2}
+    - target: {fileID: 1738435303933081970, guid: b5319bc0f87dd0b4ab519ce8a4d34e91, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738435303933081970, guid: b5319bc0f87dd0b4ab519ce8a4d34e91, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1738435304629980161, guid: b5319bc0f87dd0b4ab519ce8a4d34e91, type: 3}
       propertyPath: m_Name
       value: Player (Humanoid)
