@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PlayerAttach : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    public GameObject player;
+
+    void Update()
+    {
+        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other == player)
+        if(other.gameObject == player)
         {
             player.transform.parent = transform;
         }
@@ -16,7 +21,7 @@ public class PlayerAttach : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other == player)
+        if (other.gameObject == player)
         {
             player.transform.parent = null;
         }
