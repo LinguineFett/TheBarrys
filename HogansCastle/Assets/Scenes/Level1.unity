@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -189,7 +189,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7831428}
-  m_LocalRotation: {x: 0.15307882, y: -0.054618493, z: 0.008473919, w: 0.9866671}
+  m_LocalRotation: {x: 0.15307882, y: -0.05461853, z: 0.0084739225, w: 0.9866671}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -265,7 +265,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6066
+  m_Name: pb_Mesh17462
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1892,7 +1892,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277273452}
-  m_LocalRotation: {x: 0.2294017, y: -0.053793386, z: 0.012698894, w: 0.9717612}
+  m_LocalRotation: {x: 0.22940171, y: -0.053793356, z: 0.012698889, w: 0.9717612}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2188,7 +2188,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-41150
+  m_Name: pb_Mesh17376
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2800,7 +2800,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17346
+  m_Name: pb_Mesh17348
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3088,7 +3088,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17430
+  m_Name: pb_Mesh17432
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4792,7 +4792,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188271855}
-  m_LocalRotation: {x: 0.14198375, y: -0.05471027, z: 0.007859733, w: 0.9883247}
+  m_LocalRotation: {x: 0.14198375, y: -0.05471027, z: 0.007859732, w: 0.9883247}
   m_LocalPosition: {x: 2.5511248, y: 2.5, z: -0.48167014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4863,7 +4863,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17380
+  m_Name: pb_Mesh17398
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5905,7 +5905,7 @@ GameObject:
   - component: {fileID: 1553054141}
   - component: {fileID: 1553054140}
   m_Layer: 6
-  m_Name: Cube
+  m_Name: CubeCarpet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5921,7 +5921,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: e9cb12eddecb4f24b81364692ea6cc22, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 99a2d96bffc963f4ba27175d8b48f469, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -6226,7 +6227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553054139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.5, y: -7.6, z: 43}
+  m_LocalPosition: {x: 52.76, y: -2.54, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7666,7 +7667,7 @@ Transform:
   m_GameObject: {fileID: 2066927717}
   m_LocalRotation: {x: -0, y: 0.732978, z: -0, w: 0.6802524}
   m_LocalPosition: {x: 64.16, y: -6.9, z: -3.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
