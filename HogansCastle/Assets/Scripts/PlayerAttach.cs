@@ -6,11 +6,6 @@ public class PlayerAttach : MonoBehaviour
 {
     public GameObject player;
 
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject == player)
