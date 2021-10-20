@@ -6,6 +6,12 @@ public class PlayerAttach : MonoBehaviour
 {
     public GameObject player;
 
+    void Update()
+    {
+        OnTriggerEnter(player.GetComponent<CapsuleCollider>());
+        OnTriggerExit(player.GetComponent<CapsuleCollider>());
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject == player)
