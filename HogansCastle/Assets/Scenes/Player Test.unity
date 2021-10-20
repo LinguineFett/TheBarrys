@@ -426,7 +426,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1190520086
 MeshRenderer:
@@ -447,7 +447,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 55f2e3ed3e679c24f86bc7d5d187c79c, type: 2}
+  - {fileID: 2100000, guid: eecf63712ffc41349ac18f4702747ed1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -486,7 +486,7 @@ Transform:
   m_GameObject: {fileID: 1190520084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -506,6 +506,10 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 8354376053541951812}
+    - target: {fileID: 1491703525882377188, guid: 66a1c7ad3cad88b429638b4a86f3ca00, type: 3}
+      propertyPath: m_XAxis.m_MaxSpeed
+      value: 450
+      objectReference: {fileID: 0}
     - target: {fileID: 1491703525882377189, guid: 66a1c7ad3cad88b429638b4a86f3ca00, type: 3}
       propertyPath: m_Name
       value: CM FreeLook1
@@ -556,11 +560,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1491703527556336249, guid: 66a1c7ad3cad88b429638b4a86f3ca00, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11428679
+      value: 0.114286765
       objectReference: {fileID: 0}
     - target: {fileID: 1491703527556336249, guid: 66a1c7ad3cad88b429638b4a86f3ca00, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.35101604
+      value: -0.35101607
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a1c7ad3cad88b429638b4a86f3ca00, type: 3}
