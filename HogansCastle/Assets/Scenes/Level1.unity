@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -162,9 +162,19 @@ MonoBehaviour:
   - m_StandbyUpdate
   - m_Lens
   m_LockStageInInspector: 00000000
+  m_ValidatingStreamVersion: 20170927
+  m_OnValidateCalled: 1
   m_StreamingVersion: 20170927
   m_Priority: 10
+  <FollowTargetAttachment>k__BackingField: 0
+  <LookAtTargetAttachment>k__BackingField: 0
   m_StandbyUpdate: 2
+  mExtensions: []
+  <PreviousStateIsValid>k__BackingField: 1
+  m_WasStarted: 1
+  mSlaveStatusUpdated: 1
+  m_parentVcam: {fileID: 2054774404}
+  m_QueuePriority: 10
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -173,6 +183,9 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    <Orthographic>k__BackingField: 0
+    <SensorSize>k__BackingField: {x: 1.3333334, y: 1}
+    <IsPhysicalCamera>k__BackingField: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
     m_BlendHint: 0
@@ -180,8 +193,15 @@ MonoBehaviour:
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
+      m_CallsDirty: 1
   m_LegacyBlendHint: 0
+  <UserIsDragging>k__BackingField: 0
+  m_ComponentPipeline:
+  - {fileID: 255070180}
+  - {fileID: 255070179}
   m_ComponentOwner: {fileID: 255070178}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
 --- !u!4 &7831430
 Transform:
   m_ObjectHideFlags: 3
@@ -261,7 +281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &46199173
 PrefabInstance:
@@ -630,7 +650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3361834574544056098, guid: c73ae6621f8832748a78dfb8aec6dd12, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3361834574544056098, guid: c73ae6621f8832748a78dfb8aec6dd12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1647,6 +1667,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_vcamOwner: {fileID: 7831429}
+  mCachedFollowTarget: {fileID: 0}
+  mCachedFollowTargetVcam: {fileID: 0}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
   m_TrackedObjectOffset: {x: 0, y: 1.3, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
@@ -1662,6 +1687,11 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+  <TrackedPoint>k__BackingField: {x: 0, y: 0, z: 0}
+  m_CameraPosPrevFrame: {x: 0, y: 0, z: 0}
+  m_LookAtPrevFrame: {x: 0, y: 0, z: 0}
+  m_ScreenOffsetPrevFrame: {x: 0, y: 0}
+  m_CameraOrientationPrevFrame: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &255070180
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1674,6 +1704,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_vcamOwner: {fileID: 7831429}
+  mCachedFollowTarget: {fileID: 0}
+  mCachedFollowTargetVcam: {fileID: 0}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
   m_BindingMode: 5
   m_FollowOffset: {x: 0, y: 2.5, z: -3}
   m_XDamping: 1
@@ -1684,6 +1719,12 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+  <HideOffsetInInspector>k__BackingField: 0
+  m_PreviousTargetPosition: {x: 0, y: 0, z: 0}
+  m_PreviousReferenceOrientation: {x: 0, y: 0, z: 0, w: 1}
+  m_targetOrientationOnAssign: {x: 0, y: 0, z: 0, w: 1}
+  m_PreviousOffset: {x: 0, y: 0, z: 0}
+  m_previousTarget: {fileID: 0}
   m_Heading:
     m_Definition: 2
     m_VelocityFilterStrength: 4
@@ -1692,6 +1733,8 @@ MonoBehaviour:
     m_enabled: 0
     m_WaitTime: 1
     m_RecenteringTime: 2
+    mLastAxisInputTime: 2.5105526
+    mRecenteringVelocity: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -1710,12 +1753,23 @@ MonoBehaviour:
       m_enabled: 0
       m_WaitTime: 1
       m_RecenteringTime: 2
+      mLastAxisInputTime: 0
+      mRecenteringVelocity: 0
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
+    mCurrentSpeed: 0
+    m_InputAxisIndex: 0
+    <ValueRangeLocked>k__BackingField: 0
+    <HasRecentering>k__BackingField: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
+  mLastTargetPosition: {x: 0, y: 0, z: 0}
+  mTargetRigidBody: {fileID: 0}
+  <PreviousTarget>k__BackingField: {fileID: 0}
+  mLastCameraPosition: {x: 0, y: 0, z: 0}
+  <LastHeading>k__BackingField: 0
 --- !u!114 &255070181
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1767,9 +1821,19 @@ MonoBehaviour:
   - m_StandbyUpdate
   - m_Lens
   m_LockStageInInspector: 00000000
+  m_ValidatingStreamVersion: 20170927
+  m_OnValidateCalled: 1
   m_StreamingVersion: 20170927
   m_Priority: 10
+  <FollowTargetAttachment>k__BackingField: 0
+  <LookAtTargetAttachment>k__BackingField: 0
   m_StandbyUpdate: 2
+  mExtensions: []
+  <PreviousStateIsValid>k__BackingField: 1
+  m_WasStarted: 1
+  mSlaveStatusUpdated: 1
+  m_parentVcam: {fileID: 2054774404}
+  m_QueuePriority: 10
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -1778,6 +1842,9 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    <Orthographic>k__BackingField: 0
+    <SensorSize>k__BackingField: {x: 1.3333334, y: 1}
+    <IsPhysicalCamera>k__BackingField: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
     m_BlendHint: 0
@@ -1785,8 +1852,15 @@ MonoBehaviour:
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
+      m_CallsDirty: 1
   m_LegacyBlendHint: 0
+  <UserIsDragging>k__BackingField: 0
+  m_ComponentPipeline:
+  - {fileID: 766941963}
+  - {fileID: 766941962}
   m_ComponentOwner: {fileID: 766941961}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
 --- !u!4 &277273454
 Transform:
   m_ObjectHideFlags: 3
@@ -1794,9 +1868,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277273452}
-<<<<<<< HEAD
-  m_LocalRotation: {x: 0.22940171, y: -0.05379338, z: 0.012698893, w: 0.9717612}
->>>>>>> 5a7d5a9c7f050136b5a27aafbb5d6572eb1787d8
+  m_LocalRotation: {x: 0.22940171, y: -0.053793356, z: 0.012698889, w: 0.9717612}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1841,8 +1913,27 @@ Transform:
   - {fileID: 575437710}
   - {fileID: 760761394}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -107.94, z: 0}
+--- !u!1 &360722529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9173344468695783275, guid: 88c9c4f186532b54ca9686d5e19ff820, type: 3}
+  m_PrefabInstance: {fileID: 1717002334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &360722530
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360722529}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &391636343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1856,7 +1947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1991,7 +2082,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &407573120
 PrefabInstance:
@@ -2084,7 +2175,7 @@ Transform:
   m_Children:
   - {fileID: 1064613258}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0.314, y: -93.525, z: -0.063}
 --- !u!43 &446712858
 Mesh:
@@ -2092,7 +2183,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48926
+  m_Name: pb_Mesh17830
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2289,9 +2380,19 @@ MonoBehaviour:
   - m_StandbyUpdate
   - m_Lens
   m_LockStageInInspector: 00000000
+  m_ValidatingStreamVersion: 20170927
+  m_OnValidateCalled: 1
   m_StreamingVersion: 20170927
   m_Priority: 10
+  <FollowTargetAttachment>k__BackingField: 0
+  <LookAtTargetAttachment>k__BackingField: 0
   m_StandbyUpdate: 2
+  mExtensions: []
+  <PreviousStateIsValid>k__BackingField: 1
+  m_WasStarted: 1
+  mSlaveStatusUpdated: 1
+  m_parentVcam: {fileID: 2054774404}
+  m_QueuePriority: 10
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -2300,6 +2401,9 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    <Orthographic>k__BackingField: 0
+    <SensorSize>k__BackingField: {x: 1.3333334, y: 1}
+    <IsPhysicalCamera>k__BackingField: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
     m_BlendHint: 0
@@ -2307,8 +2411,15 @@ MonoBehaviour:
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
+      m_CallsDirty: 1
   m_LegacyBlendHint: 0
+  <UserIsDragging>k__BackingField: 0
+  m_ComponentPipeline:
+  - {fileID: 2120533848}
+  - {fileID: 2120533847}
   m_ComponentOwner: {fileID: 2120533846}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
 --- !u!4 &543765765
 Transform:
   m_ObjectHideFlags: 3
@@ -2555,6 +2666,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_vcamOwner: {fileID: 277273453}
+  mCachedFollowTarget: {fileID: 0}
+  mCachedFollowTargetVcam: {fileID: 0}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
   m_TrackedObjectOffset: {x: 0, y: 1, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
@@ -2570,6 +2686,11 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+  <TrackedPoint>k__BackingField: {x: 0, y: 0, z: 0}
+  m_CameraPosPrevFrame: {x: 0, y: 0, z: 0}
+  m_LookAtPrevFrame: {x: 0, y: 0, z: 0}
+  m_ScreenOffsetPrevFrame: {x: 0, y: 0}
+  m_CameraOrientationPrevFrame: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &766941963
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2582,6 +2703,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_vcamOwner: {fileID: 277273453}
+  mCachedFollowTarget: {fileID: 0}
+  mCachedFollowTargetVcam: {fileID: 0}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
   m_BindingMode: 5
   m_FollowOffset: {x: 0, y: 2.5, z: -3}
   m_XDamping: 1
@@ -2592,6 +2718,12 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+  <HideOffsetInInspector>k__BackingField: 0
+  m_PreviousTargetPosition: {x: 0, y: 0, z: 0}
+  m_PreviousReferenceOrientation: {x: 0, y: 0, z: 0, w: 1}
+  m_targetOrientationOnAssign: {x: 0, y: 0, z: 0, w: 1}
+  m_PreviousOffset: {x: 0, y: 0, z: 0}
+  m_previousTarget: {fileID: 0}
   m_Heading:
     m_Definition: 2
     m_VelocityFilterStrength: 4
@@ -2600,6 +2732,8 @@ MonoBehaviour:
     m_enabled: 0
     m_WaitTime: 1
     m_RecenteringTime: 2
+    mLastAxisInputTime: 2.5105526
+    mRecenteringVelocity: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -2618,12 +2752,23 @@ MonoBehaviour:
       m_enabled: 0
       m_WaitTime: 1
       m_RecenteringTime: 2
+      mLastAxisInputTime: 0
+      mRecenteringVelocity: 0
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
+    mCurrentSpeed: 0
+    m_InputAxisIndex: 0
+    <ValueRangeLocked>k__BackingField: 0
+    <HasRecentering>k__BackingField: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
+  mLastTargetPosition: {x: 0, y: 0, z: 0}
+  mTargetRigidBody: {fileID: 0}
+  <PreviousTarget>k__BackingField: {fileID: 0}
+  mLastCameraPosition: {x: 0, y: 0, z: 0}
+  <LastHeading>k__BackingField: 0
 --- !u!114 &766941964
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -2985,6 +3130,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
   m_PrefabInstance: {fileID: 838455519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &874859650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9173344469852170209, guid: 88c9c4f186532b54ca9686d5e19ff820, type: 3}
+  m_PrefabInstance: {fileID: 1717002334}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &877571810
 GameObject:
@@ -3604,37 +3754,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0.75}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &893218912
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 893218913}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &893218913
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893218912}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 71.4043, y: 1.4700003, z: -103.761215}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &893923705
 Mesh:
@@ -3813,7 +3933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4661435515762813124, guid: e289bf5debb17f6459818c207d781953, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4292,7 +4412,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064613257
 GameObject:
@@ -4366,7 +4486,7 @@ Transform:
   - {fileID: 1970721624}
   - {fileID: 1267995313}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -107.94, z: 0}
 --- !u!850595691 &1125630916
 LightingSettings:
@@ -4429,126 +4549,6 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
---- !u!1 &1188271855
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1188271858}
-  - component: {fileID: 1188271857}
-  - component: {fileID: 1188271856}
-  - component: {fileID: 1188271859}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1188271856
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188271855}
-  m_Enabled: 1
---- !u!20 &1188271857
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188271855}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &1188271858
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188271855}
-<<<<<<< HEAD
-  m_LocalRotation: {x: 0.14198385, y: -0.05471025, z: 0.0078597395, w: 0.9883247}
->>>>>>> 5a7d5a9c7f050136b5a27aafbb5d6572eb1787d8
-  m_LocalPosition: {x: 2.5511248, y: 2.5, z: -0.48167014}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -0.082, y: 2.373, z: -1.503}
---- !u!114 &1188271859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188271855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!43 &1255711699
 Mesh:
   m_ObjectHideFlags: 0
@@ -5331,7 +5331,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1267995312
 PrefabInstance:
@@ -5572,7 +5572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5645,7 +5645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419882, guid: 14fb00da0e33940448e682c534f283dd, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 419882, guid: 14fb00da0e33940448e682c534f283dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5850,7 +5850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8903058273634951509, guid: f1fc5bb90ac285e4486771552d63bcb8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5970,6 +5970,7 @@ GameObject:
   - component: {fileID: 1553054143}
   - component: {fileID: 1553054142}
   - component: {fileID: 1553054141}
+  - component: {fileID: 1553054140}
   m_Layer: 6
   m_Name: CubeCarpet
   m_TagString: Untagged
@@ -5977,6 +5978,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1553054140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553054139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26eaf736dd25354489ef9d29d57e842c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 360722529}
+  fullPlayer: {fileID: 874859650}
 --- !u!65 &1553054141
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5985,7 +6000,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553054139}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 25, y: 1.446671, z: 25.66473}
@@ -6281,7 +6296,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1628117461
 PrefabInstance:
@@ -6296,7 +6311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010693723324, guid: 529296adea5f8bb4581e098f98e62549, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000010693723324, guid: 529296adea5f8bb4581e098f98e62549, type: 3}
       propertyPath: m_LocalScale.x
@@ -6423,7 +6438,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9173344469852170208, guid: 88c9c4f186532b54ca9686d5e19ff820, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9173344469852170208, guid: 88c9c4f186532b54ca9686d5e19ff820, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7089,7 +7104,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1738830552
 PrefabInstance:
@@ -7535,9 +7550,19 @@ MonoBehaviour:
   m_ExcludedPropertiesInInspector:
   - m_Script
   m_LockStageInInspector: 
+  m_ValidatingStreamVersion: 20170927
+  m_OnValidateCalled: 1
   m_StreamingVersion: 20170927
   m_Priority: 10
+  <FollowTargetAttachment>k__BackingField: 0
+  <LookAtTargetAttachment>k__BackingField: 0
   m_StandbyUpdate: 2
+  mExtensions: []
+  <PreviousStateIsValid>k__BackingField: 1
+  m_WasStarted: 1
+  mSlaveStatusUpdated: 1
+  m_parentVcam: {fileID: 0}
+  m_QueuePriority: 10
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_CommonLens: 1
@@ -7547,6 +7572,9 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    <Orthographic>k__BackingField: 0
+    <SensorSize>k__BackingField: {x: 1.3333334, y: 1}
+    <IsPhysicalCamera>k__BackingField: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
     m_BlendHint: 0
@@ -7554,6 +7582,7 @@ MonoBehaviour:
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
+      m_CallsDirty: 0
   m_LegacyBlendHint: 0
   m_YAxis:
     Value: 0.5
@@ -7571,12 +7600,20 @@ MonoBehaviour:
       m_enabled: 0
       m_WaitTime: 1
       m_RecenteringTime: 2
+      mLastAxisInputTime: 0
+      mRecenteringVelocity: 0
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
+    mCurrentSpeed: 0
+    m_InputAxisIndex: 1
+    <ValueRangeLocked>k__BackingField: 1
+    <HasRecentering>k__BackingField: 0
   m_YAxisRecentering:
     m_enabled: 0
     m_WaitTime: 1
     m_RecenteringTime: 2
+    mLastAxisInputTime: 4.8909855
+    mRecenteringVelocity: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -7595,8 +7632,14 @@ MonoBehaviour:
       m_enabled: 0
       m_WaitTime: 1
       m_RecenteringTime: 2
+      mLastAxisInputTime: 0
+      mRecenteringVelocity: 0
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
+    mCurrentSpeed: 0
+    m_InputAxisIndex: 0
+    <ValueRangeLocked>k__BackingField: 0
+    <HasRecentering>k__BackingField: 0
   m_Heading:
     m_Definition: 2
     m_VelocityFilterStrength: 4
@@ -7605,6 +7648,8 @@ MonoBehaviour:
     m_enabled: 0
     m_WaitTime: 1
     m_RecenteringTime: 2
+    mLastAxisInputTime: 4.8909855
+    mRecenteringVelocity: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_BindingMode: 5
@@ -7617,10 +7662,43 @@ MonoBehaviour:
   - m_Height: 0.4
     m_Radius: 1.3
   m_LegacyHeadingBias: 3.4028235e+38
+  mUseLegacyRigDefinitions: 0
+  mIsDestroyed: 0
   m_Rigs:
   - {fileID: 277273453}
   - {fileID: 543765764}
   - {fileID: 7831429}
+  mOrbitals:
+  - {fileID: 766941963}
+  - {fileID: 2120533848}
+  - {fileID: 255070180}
+  <CachedXAxisHeading>k__BackingField: 0
+  m_CachedOrbits:
+  - m_Height: 4.5
+    m_Radius: 1.75
+  - m_Height: 2.5
+    m_Radius: 3
+  - m_Height: 0.4
+    m_Radius: 1.3
+  m_CachedTension: 0.2
+  m_CachedKnots:
+  - {x: 0, y: 0.32, z: -1.04, w: 0}
+  - {x: 0, y: 0.4, z: -1.3, w: 0}
+  - {x: 0, y: 2.5, z: -3, w: 0}
+  - {x: 0, y: 4.5, z: -1.75, w: 0}
+  - {x: 0, y: 3.6, z: -1.4, w: 0}
+  m_CachedCtrl1:
+  - {x: 0, y: 0.18119052, z: -0.92249995, w: 0}
+  - {x: 0, y: 0.75761896, z: -1.795, w: 0}
+  - {x: 0, y: 3.3883336, z: -3.0975, w: 0}
+  - {x: 0, y: 4.6890473, z: -1.3149999, w: 0}
+  - {x: 0, y: 0, z: 0, w: 0}
+  m_CachedCtrl2:
+  - {x: 0, y: 0.04238105, z: -0.80499995, w: 0}
+  - {x: 0, y: 1.6116664, z: -2.9025, w: 0}
+  - {x: 0, y: 4.3109527, z: -2.185, w: 0}
+  - {x: 0, y: 4.1445236, z: -1.3575, w: 0}
+  - {x: 0, y: 0, z: 0, w: 0}
 --- !u!4 &2054774405
 Transform:
   m_ObjectHideFlags: 0
@@ -7636,7 +7714,7 @@ Transform:
   - {fileID: 543765765}
   - {fileID: 7831430}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066927717
 GameObject:
@@ -7949,14 +8027,13 @@ Transform:
   m_LocalScale: {x: 1.01, y: 4, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 94.273, z: 0}
 --- !u!1 &2103858477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 148104, guid: 14fb00da0e33940448e682c534f283dd, type: 3}
   m_PrefabInstance: {fileID: 1399083568}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!114 &2103858478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7969,7 +8046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae54f1435f22b83488b2341397954555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> 5a7d5a9c7f050136b5a27aafbb5d6572eb1787d8
 --- !u!65 &2103858479
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7983,21 +8059,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.456974, y: 10.685268, z: 18.555065}
   m_Center: {x: 0.00001907357, y: 0.38057545, z: -0.000000045368115}
-<<<<<<< HEAD
---- !u!114 &2103858480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103858477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae54f1435f22b83488b2341397954555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
->>>>>>> 5a7d5a9c7f050136b5a27aafbb5d6572eb1787d8
 --- !u!1 &2120533845
 GameObject:
   m_ObjectHideFlags: 3
@@ -8043,6 +8104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_vcamOwner: {fileID: 543765764}
+  mCachedFollowTarget: {fileID: 0}
+  mCachedFollowTargetVcam: {fileID: 0}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
   m_TrackedObjectOffset: {x: 0, y: 1.5, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
@@ -8058,6 +8124,11 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+  <TrackedPoint>k__BackingField: {x: 0, y: 0, z: 0}
+  m_CameraPosPrevFrame: {x: 0, y: 0, z: 0}
+  m_LookAtPrevFrame: {x: 0, y: 0, z: 0}
+  m_ScreenOffsetPrevFrame: {x: 0, y: 0}
+  m_CameraOrientationPrevFrame: {x: 0, y: 0, z: 0, w: 1}
 --- !u!114 &2120533848
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -8070,6 +8141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_vcamOwner: {fileID: 543765764}
+  mCachedFollowTarget: {fileID: 0}
+  mCachedFollowTargetVcam: {fileID: 0}
+  mCachedLookAtTarget: {fileID: 0}
+  mCachedLookAtTargetVcam: {fileID: 0}
   m_BindingMode: 5
   m_FollowOffset: {x: 0, y: 2.5, z: -3}
   m_XDamping: 1
@@ -8080,6 +8156,12 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+  <HideOffsetInInspector>k__BackingField: 0
+  m_PreviousTargetPosition: {x: 0, y: 0, z: 0}
+  m_PreviousReferenceOrientation: {x: 0, y: 0, z: 0, w: 1}
+  m_targetOrientationOnAssign: {x: 0, y: 0, z: 0, w: 1}
+  m_PreviousOffset: {x: 0, y: 0, z: 0}
+  m_previousTarget: {fileID: 0}
   m_Heading:
     m_Definition: 2
     m_VelocityFilterStrength: 4
@@ -8088,6 +8170,8 @@ MonoBehaviour:
     m_enabled: 0
     m_WaitTime: 1
     m_RecenteringTime: 2
+    mLastAxisInputTime: 2.5105526
+    mRecenteringVelocity: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -8106,12 +8190,23 @@ MonoBehaviour:
       m_enabled: 0
       m_WaitTime: 1
       m_RecenteringTime: 2
+      mLastAxisInputTime: 0
+      mRecenteringVelocity: 0
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
+    mCurrentSpeed: 0
+    m_InputAxisIndex: 0
+    <ValueRangeLocked>k__BackingField: 0
+    <HasRecentering>k__BackingField: 0
   m_LegacyRadius: 3.4028235e+38
   m_LegacyHeightOffset: 3.4028235e+38
   m_LegacyHeadingBias: 3.4028235e+38
   m_HeadingIsSlave: 1
+  mLastTargetPosition: {x: 0, y: 0, z: 0}
+  mTargetRigidBody: {fileID: 0}
+  <PreviousTarget>k__BackingField: {fileID: 0}
+  mLastCameraPosition: {x: 0, y: 0, z: 0}
+  <LastHeading>k__BackingField: 0
 --- !u!114 &2120533849
 MonoBehaviour:
   m_ObjectHideFlags: 3
