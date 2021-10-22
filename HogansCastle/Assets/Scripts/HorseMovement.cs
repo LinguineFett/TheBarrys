@@ -21,9 +21,9 @@ public class HorseMovement : MonoBehaviour
 
     void turn() {
         if (Input.GetKey(KeyCode.A)) {
-            rigidbody.position += Vector3.left * Time.deltaTime * speed;
+            GetComponent<Rigidbody>().position += Vector3.left * Time.deltaTime * speed;
         } else if (Input.GetKey(KeyCode.D)) {
-            rigidbody.position += Vector3.right * Time.deltaTime * speed;
+            GetComponent<Rigidbody>().position += Vector3.right * Time.deltaTime * speed;
         }
     }
 }
