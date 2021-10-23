@@ -6,30 +6,46 @@ public class PlayerAttach : MonoBehaviour
 {
 
     public GameObject player;
-    public GameObject fullPlayer;
+    //public GameObject fullPlayer;
 
-    private void Awake()
+    private void OnTriggerStay(Collider other)
     {
-
-        player = GameObject.Find("Player (Humanoid)");
-        fullPlayer = GameObject.Find("Player");
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject == player)
+        if(other.gameObject.tag == "platform")
         {
-            Debug.Log("HasCollided");
-            fullPlayer.transform.parent = transform;
+            transform.parent = other.transform;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player)
+        if(other.gameObject.tag == "platform")
         {
-            fullPlayer.transform.parent = null;
+            transform.parent = null;
         }
     }
+
+    //private void Awake()
+    //{
+
+    //    player = GameObject.Find("Player (Humanoid)");
+    //    fullPlayer = GameObject.Find("Player");
+    //}
+
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject == player)
+    //    {
+    //        Debug.Log("HasCollided");
+    //        fullPlayer.transform.parent = transform;
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject == player)
+    //    {
+    //        fullPlayer.transform.parent = null;
+    //    }
+    //}
 }
