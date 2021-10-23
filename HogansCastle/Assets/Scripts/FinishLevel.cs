@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class FinishLevel : MonoBehaviour
 {
+    public ManageGame gameManager;
     public GameObject player;
 
-    void OnTriggerEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player)
         {
-            SceneManager.LoadScene("LevelWonScreen");
+            gameManager.CompleteLevel();
+            //gameManager.StopLevel();
         }
     }
 }
