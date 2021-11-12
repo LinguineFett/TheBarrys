@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float rotationSpeed;
+    private SceneLoader sceneLoader = new SceneLoader();
     private float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
@@ -134,6 +136,13 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("Finish")) {
+            Debug.Log("Collided");
+            sceneLoader.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private IEnumerator Attack()
