@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // References
     private CharacterController controller;
     private Animator anim;
+    [HideInInspector] public static bool isAttacking;
     public Transform cam;
 
     private void Start()
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Move();
+        
         if (coolDownTimer > 0)
         {
             coolDownTimer -= Time.deltaTime;
@@ -54,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(Attack());
             coolDownTimer = coolDown;
+            
         }
         
     }
@@ -146,12 +149,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private IEnumerator Attack()
-    {
-
-        //anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 1);
+    {   
+        isAttacking = true;
         anim.SetTrigger("Attack");
-
         yield return new WaitForSeconds(0.1f);
-       // anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 0);
     }
 }

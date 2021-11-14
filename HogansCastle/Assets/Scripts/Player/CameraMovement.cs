@@ -18,7 +18,7 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        playerTransform = GameObject.Find("Player (Humanoid)").GetComponent<Transform>();
+        playerTransform = GameObject.Find("TerryCrews").GetComponent<Transform>();
         Cursor.lockState = CursorLockMode.Locked;
         sensitivityY = sensitivityX * 9 / 16 * 1.5f;
     }
