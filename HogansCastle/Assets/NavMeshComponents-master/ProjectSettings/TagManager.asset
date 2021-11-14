@@ -3,22 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ground
-  - Animal
-  - Water
-  - Fly
-  - Climb
-  - Stair
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Ground
   - 
   - 
   - 
@@ -32,17 +24,18 @@ TagManager:
   - 
   - 
   - 
-  - Animal
-  - 
-  - 
-  - Enemy
   - 
   - 
   - 
   - 
   - 
   - 
-  - Item
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   m_SortingLayers:
   - name: Default
