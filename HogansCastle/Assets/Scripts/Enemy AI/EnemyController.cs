@@ -1,65 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /// <summary>
 /// Acts as a controller for the enemy
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
-    private WalkBehaviour behavior;
-    private ChasePlayer chaseBehaviour;
+    public float lookRadius;
+    Transform target;
+    NavMeshAgent agent;
 
-    private void Awake()
+    private void Start()
     {
-        behavior = GetComponent<WalkBehaviour>();
-        chaseBehaviour = GetComponent<ChasePlayer>();
-        SwitchToWalkMode();
+        target = PlayerManager.instance.player.transform;
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        behavior.OnPlayerFoundEvent += PlayerFound;
-        chaseBehaviour.OnPlayerLostEvent += PlayerLost;
-    }
+        float distance = Vector3.Distance(target.position, transform.position);
 
-    private void OnDisable()
-    {
-        behavior.OnPlayerFoundEvent -= PlayerFound;
-        chaseBehaviour.OnPlayerLostEvent -= PlayerLost;
-    }
-
-    public void PlayerFound()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (var obj in enemies)
+        if (distance <= lookRadius)
         {
-            EnemyController controller = obj.GetComponent<EnemyController>();
-            controller.SwitchToChaseMode();
+            agent.SetDestination(target.position);
         }
     }
 
-    public void PlayerLost()
+    private void OnDrawGizmos()
     {
-         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (var obj in enemies)
-        {
-            EnemyController controller = obj.GetComponent<EnemyController>();
-            controller.SwitchToWalkMode();
-        }
-    }
-
-    public void SwitchToChaseMode()
-    {
-        behavior.enabled = false;
-        chaseBehaviour.enabled = true;
-    }
-
-    public void SwitchToWalkMode()
-    {
-        behavior.enabled = true;
-        chaseBehaviour.enabled = false;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 }
