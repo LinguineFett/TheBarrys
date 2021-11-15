@@ -11,6 +11,7 @@ TagManager:
   - Climb
   - Stair
   - Enemy
+  - Waypoint
   layers:
   - Default
   - TransparentFX

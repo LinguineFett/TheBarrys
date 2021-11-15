@@ -16,30 +16,24 @@ public class ChasePlayer : MonoBehaviour
 
     private static float s_PlayerLostTime;
 
-    [HideInInspector]
-    public bool canMove = true;
+    
 
     private void Awake()
     {
-        m_Player = GameObject.FindGameObjectWithTag("Player");
+        m_Player = GameObject.Find("TerryCrews");
         m_Agent = GetComponent<NavMeshAgent>();
         m_Vision = GetComponent<SeePlayer>();
     }
 
     private void OnEnable()
     {
-        if (canMove)
-        {
-            m_Agent.speed = moveSpeed;
-            m_Agent.angularSpeed = angularSpeed;
-            s_PlayerLostTime = Time.time + timeUntilPlayerLost;
-        }
+        m_Agent.speed = moveSpeed;
+        m_Agent.angularSpeed = angularSpeed;
+        s_PlayerLostTime = Time.time + timeUntilPlayerLost;
+
     }
 
-    private void OnDisable()
-    {
-        canMove = false;
-    }
+    
 
     void Update()
     {
@@ -50,6 +44,7 @@ public class ChasePlayer : MonoBehaviour
         bool canSeePlayer = m_Vision.IsPlayerInVision();
         if (canSeePlayer)
         {
+            Debug.Log("i see u");
             s_PlayerLostTime = Time.time + timeUntilPlayerLost;
         }
 
